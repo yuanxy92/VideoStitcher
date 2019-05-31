@@ -34,3 +34,5 @@
 bak/
 build/
 data/
+
+\.vscode/
