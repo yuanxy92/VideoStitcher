@@ -602,8 +602,8 @@ VideoStitcher::Status VideoStitcher::composePanorama(std::vector<cv::VideoCaptur
 #endif
 
 			// Compensate exposure
-			exposure_comp_->apply((int)img_idx, corners[img_idx], img_warped, mask_warped);
-			LOGLN(" compensate exposure: " << ((getTickCount() - pt) / getTickFrequency()) << " sec");
+			//exposure_comp_->apply((int)img_idx, corners[img_idx], img_warped, mask_warped);
+			//LOGLN(" compensate exposure: " << ((getTickCount() - pt) / getTickFrequency()) << " sec");
 #if ENABLE_LOG
 			pt = getTickCount();
 #endif
@@ -698,10 +698,11 @@ VideoStitcher::Status VideoStitcher::stitch(std::vector<cv::VideoCapture> reader
 	std::vector<cv::Mat> images(readers.size());
 	cv::Mat pano;
 	for (int i = 0; i < readers.size(); i++) {
+		//readers[i].set(cv::CAP_PROP_POS_FRAMES, 30);
 		readers[i] >> images[i];
 	}
 	Status status = estimateTransform(images, cv::noArray());
-	composePanorama(readers, "E:/data/giga_paper/360/5+9_G+L_0530/pano.avi");
+	composePanorama(readers, "E:/data/giga_paper/360/5+9_G+L_0530/pano2.avi");
 
 	return VideoStitcher::Status::OK;
 }

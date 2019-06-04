@@ -20,6 +20,7 @@ int main(int argc, char* argv[]) {
 
 	cv::Ptr<mycv::VideoStitcher> stitcher = mycv::VideoStitcher::create();
 	cv::Mat pano;
+	//stitcher->setExposureCompensator(cv::makePtr<cv::detail::NoExposureCompensator>());
 	stitcher->stitch(readers, writer);
 
 	return 0;
